@@ -1,9 +1,9 @@
 # Define a class called TreeNode to represent nodes in the story tree
 class TreeNode:
     # Constructor method to initialize a node with a story piece and choices
-    def __init__(self, story_piece, choices=[]):
+    def __init__(self, story_piece, choices=None):
         self.story_piece = story_piece
-        self.choices = choices
+        self.choices = choices or []
 
     # Method to add a child node (choice) to the current node
     def add_child(self, node):
@@ -12,7 +12,7 @@ class TreeNode:
     # Method to traverse the story tree based on user input
     def traverse(self):
         story_node = self
-        while len(story_node.choices) > 0:
+        while story_node.choices:
             choice = input("Enter 1 or 2 to continue the story: ")
             if choice not in ["1", "2"]:
                 print("Invalid choice. Try again.")

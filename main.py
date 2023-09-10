@@ -1,10 +1,10 @@
 # Import TreeNode class and story_data from respective files
-from tree_node import TreeNode
 from story_data import story_data
+from tree_node import TreeNode
 
 def main():
     # Create the root node with the initial story piece
-    story_root = TreeNode(story_data[0][0], story_data[0][1])
+    story_root = TreeNode(story_data.story_piece, story_data.choices)
 
     # Print the initial story piece
     print("Once upon a time...")

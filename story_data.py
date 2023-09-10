@@ -1,61 +1,67 @@
-# Define the story data as a list of tuples, each containing a story piece and choices
-story_data = [
-    ("""
-    You are in a forest clearing. There is a path to the left.
-    A bear emerges from the trees and roars!
-    Do you: 
-    1 ) Roar back!
-    2 ) Run to the left...
-    """, [
-        ("""
-        The bear returns and tells you it's been a rough week. After making peace with
-        a talking bear, he shows you the way out of the forest.
+from tree_node import TreeNode
 
-        YOU HAVE ESCAPED THE WILDERNESS.
-        """, []),
-        ("""
-        The bear returns and tells you that bullying is not okay before leaving you alone
-        in the wilderness.
+story_data = TreeNode("""
+You are in a forest clearing. There is a path to the left.
+A bear emerges from the trees and roars!
+Do you: 
+1 ) Roar back!
+2 ) Run to the left...
+""")
 
-        YOU REMAIN LOST.
-        """, [])
-    ]),
-    ("""
-    The bear is startled and runs away.
-    Do you:
-    1 ) Shout 'Sorry bear!'
-    2 ) Yell 'Hooray!'
-    """, [
-        ("""
-        The bear returns and tells you it's been a rough week. After making peace with
-        a talking bear, he shows you the way out of the forest.
+choice_a_1 = TreeNode("""
+The bear returns and tells you it's been a rough week. After 
+making peace with
+a talking bear, he shows you the way out of the forest.
 
-        YOU HAVE ESCAPED THE WILDERNESS.
-        """, []),
-        ("""
-        The bear returns and tells you that bullying is not okay before leaving you alone
-        in the wilderness.
+YOU HAVE ESCAPED THE WILDERNESS.
+""")
 
-        YOU REMAIN LOST.
-        """, [])
-    ]),
-    ("""
-    You come across a clearing full of flowers. 
-    The bear follows you and asks 'what gives?'
-    Do you:
-    1 ) Gasp 'A talking bear!'
-    2 ) Explain that the bear scared you.
-    """, [
-        ("""
-        The bear is unamused. After smelling the flowers, it turns around and leaves you alone.
+choice_a_2 = TreeNode("""
+The bear returns and tells you that bullying is not okay before 
+leaving you alone
+in the wilderness.
 
-        YOU REMAIN LOST.
-        """, []),
-        ("""
-        The bear understands and apologizes for startling you. Your new friend shows you a 
-        path leading out of the forest.
+YOU REMAIN LOST.
+""")
 
-        YOU HAVE ESCAPED THE WILDERNESS.
-        """, [])
-    ])
-]
+choice_b_1 = TreeNode("""
+The bear is unamused. After smelling the flowers, it turns 
+around and leaves you alone.
+
+YOU REMAIN LOST.
+"""
+)
+choice_b_2 = TreeNode("""
+The bear understands and apologizes for startling you. Your new 
+friend shows you a 
+path leading out of the forest.
+
+YOU HAVE ESCAPED THE WILDERNESS.
+"""
+)
+
+# Create additional choice nodes
+choice_a = TreeNode("""
+The bear is startled and runs away.
+Do you:
+1 ) Shout 'Sorry bear!'
+2 ) Yell 'Hooray!'
+"""
+)
+
+choice_b = TreeNode("""
+You come across a clearing full of flowers. 
+The bear follows you and asks 'what gives?'
+Do you:
+1 ) Gasp 'A talking bear!'
+2 ) Explain that the bear scared you.
+"""
+)
+
+# Connect nodes to form the story tree
+story_data.add_child(choice_a)
+story_data.add_child(choice_b)
+choice_a.add_child(choice_a_1)
+choice_a.add_child(choice_a_2)
+choice_b.add_child(choice_b_1)
+choice_b.add_child(choice_b_2)
